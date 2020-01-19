@@ -6,6 +6,8 @@ import java.net.URL;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.Capabilities;
 
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -41,7 +43,9 @@ public class TestBase {
 
   @BeforeMethod
   public void initWebDriver() {
-
+    /*ChromeOptions options = new ChromeOptions();
+    options.addArguments("--lang=" + "rus");
+    driver = new ChromeDriver(options);*/
     driver = WebDriverPool.DEFAULT.getDriver(gridHubUrl, capabilities);
     homePage = PageFactory.initElements(driver,HomePageHelper.class);
     //===========Enter to Trello====
@@ -53,5 +57,6 @@ public class TestBase {
   @AfterMethod(alwaysRun = true)
   public void tearDown() {
     WebDriverPool.DEFAULT.dismissAll();
+    //driver.quit();
   }
 }

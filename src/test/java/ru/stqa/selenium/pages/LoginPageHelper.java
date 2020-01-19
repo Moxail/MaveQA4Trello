@@ -68,6 +68,7 @@ public class LoginPageHelper extends  PageBase{
     }
 
     public void waitPasswordError() {
+
         waitUntilElementIsVisible(By
                 .xpath("//div[@id = 'login-error']/span"),10);
     }
